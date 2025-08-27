@@ -18,23 +18,23 @@ Please check out the full project documentation under the folder documents/ for 
 Main commands used include:
 
 Git commands:
-`git clone https://github.com/pattytechuk/secure-paas-landing-zone.git`
-`git checkout -b feature/initial-setup`
-`git add .`
-`git commit -m "Initial Bicep + PowerShell deployment"`
-`git push origin feature/initial-setup`
+`git clone https://github.com/pattytechuk/secure-paas-landing-zone.git`  
+`git checkout -b feature/initial-setup`  
+`git add .`  
+`git commit -m "Initial Bicep + PowerShell deployment"`  
+`git push origin feature/initial-setup`  
 
 PowerShell deployment commands: 
-`Connect-AzAccount`
-`New-AzResourceGroup -Name SecurePaaSLandingZone -Location "UKSouth"`
-`pwsh ./scripts/deploy.ps1`
+`Connect-AzAccount`  
+`New-AzResourceGroup -Name SecurePaaSLandingZone -Location "UKSouth"`  
+`pwsh ./scripts/deploy.ps1`  
 
-# Validation
-`pwsh ./scripts/validate.ps1`
+Validation
+`pwsh ./scripts/validate.ps1`  
 
-High-level overview of steps taken:
-1. Created hub-and-spoke VNet architecture with separate reusable Bicep modules
-2. Peered hub and spoke VNets (hub contains Bastion + Firewall, spokes contain App + Data services)
+### High-level overview of steps taken:
+1. Created hub-and-spoke VNet architecture with separate, reusable Bicep modules
+2. Peered hub and spoke VNets (with the hub containing Bastion VM + Firewall, and the spokes containing Azure App + DB services)
 3. Deployed App Service (and created private endpoint in Spoke 1 to connect to it)
 4. Deployed SQL Database and Key Vault (private endpoints in Spoke 2)
 5. Configured private DNS zones for name resolution of private endpoints
@@ -49,10 +49,9 @@ The GitHub Actions pipeline automates the full deployment and validation process
 - Step 1: Authenticate to Azure using Service Principal stored in GitHub Secrets
 - Step 2: Run Bicep deployment via PowerShell script (deploy.ps1)
 - Step 3: Run validation checks (validate.ps1) to confirm:
-- VNet peering is active
-- App Service and SQL DB resolve via private endpoints
-- Bastion provides secure connectivity to VMs if needed
-- Step 4: Report results back into GitHub Actions logs
+- VNet peering is turned on and active
+- App Service and SQL DB resolve via private endpoints from private endpoint subnets within each spoke
+- Bastion provides secure connectivity to VMs
 
 ## ✅ Folder Structure
 ```
