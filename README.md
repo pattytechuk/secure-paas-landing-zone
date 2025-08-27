@@ -4,7 +4,7 @@
 
 This project provisions a secure PaaS landing zone in Azure using a hub-and-spoke network topology with private endpoints for App Service, SQL Database, and Key Vault. The deployment is automated with Bicep modules, PowerShell orchestration scripts, and a GitHub Actions CI/CD pipeline.
 
-Some PowerShell scripting was used for initial setup (resource group creation, tests to confirm connectivity). The CI/CD workflow should validates, deploy, and test the infrastructure whenever code changes are pushed to the repo.
+Some PowerShell scripting was used for initial setup (resource group creation, tests to confirm connectivity). The CI/CD workflow should validate, deploy, and test the infrastructure whenever code changes are pushed to the repo.
 
 ## ✅ Tech Stack
 - 📐 Bicep 
@@ -13,7 +13,7 @@ Some PowerShell scripting was used for initial setup (resource group creation, t
 - 🔁 GitHub Actions (i.e. the CI/CD pipeline)
 
 ## ✅ Setup
-Please check out the full project documentation under the folder documents/ for all steps taken, including all scripts, commands used.
+Full project documentation under the folder documents/ for all steps taken, including all scripts, commands used - coming soon.
 
 Main commands used include:
 
@@ -33,6 +33,7 @@ Validation
 `pwsh ./scripts/validate.ps1`  
 
 ### High-level overview of steps taken:
+
 1. Created hub-and-spoke VNet architecture with separate, reusable Bicep modules
 2. Peered hub and spoke VNets (with the hub containing Bastion VM + Firewall, and the spokes containing Azure App + DB services)
 3. Deployed App Service (and created private endpoint in Spoke 1 to connect to it)
@@ -45,7 +46,7 @@ Validation
 
 The GitHub Actions pipeline automates the full deployment and validation process:
 
-- On push/PR to main → pipeline triggers
+- On push to main, the pipeline triggers
 - Step 1: Authenticate to Azure using Service Principal stored in GitHub Secrets
 - Step 2: Run Bicep deployment via PowerShell script (deploy.ps1)
 - Step 3: Run validation checks (validate.ps1) to confirm:
@@ -77,6 +78,6 @@ Above: Successful deployment of all resources, as reflected in Azure portal.
 
 This project demonstrates the following tech: IaC with Bicep, scripting with PowerShell, secure hub-and-spoke landing zone design, private networking using private endpoints, and CI/CD automation using GitHub Actions. Although landing zone accelerators are often used to simplify deployment processes, I wanted a hands on, ground level view while building an automated pipline that would deploy key parts of infra. 
 
-This project's a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads. Perhaps a more realistic production pattern might have included the deployment of monitoring + Sentinel for centralized security. If I were to do this project again, I would consider integrate VPN gateways, and an on-prem vnet to simulate P2S/S2S connections. 
+This project's a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads. Perhaps a more realistic production pattern might have included the deployment of monitoring + Sentinel for centralized security. If I were to do this project again, I would consider integrate VPN gateways, creating UDRs to ensure all traffic passes through the hub's firewall, and I would have created an on-prem vnet to simulate P2S/S2S VPN connections. 
 
 I would have also looked into methods to prevent configuration drift and added protections for automated rollback.
