@@ -1,4 +1,4 @@
-# Secure PaaS Landing Zone
+# Automated Secure PaaS Landing Zone Deployment with CI/CD
 
 ## ✅ Project Overview
 
@@ -7,10 +7,10 @@ This project provisions a secure PaaS landing zone in Azure using a hub-and-spok
 Some PowerShell scripting was used for initial setup (resource group creation, tests to confirm connectivity). The CI/CD workflow should validates, deploy, and test the infrastructure whenever code changes are pushed to the repo.
 
 ## ✅ Tech Stack
-📐 Bicep (Infrastructure as Code)
-💻 PowerShell (deployment & validation scripting)
-☁️ Azure Networking (Hub-Spoke VNets, Private Endpoints, Bastion, Firewall)
-🔁 GitHub Actions (CI/CD pipeline)
+- 📐 Bicep 
+- 💻 PowerShell (for deployment &  scripting)
+- ☁️ Azure Networking (including hub and spoke vnets, Private Endpoints, Bastion, Firewall)
+- 🔁 GitHub Actions (i.e. the CI/CD pipeline)
 
 ## ✅ Setup
 Please check out the full project documentation under the folder documents/ for all steps taken, including all scripts, commands used.
@@ -30,7 +30,7 @@ PowerShell deployment commands:
 `pwsh ./scripts/deploy.ps1`
 
 # Validation
-pwsh ./scripts/validate.ps1
+`pwsh ./scripts/validate.ps1`
 
 High-level overview of steps taken:
 1. Created hub-and-spoke VNet architecture with separate reusable Bicep modules
@@ -79,4 +79,6 @@ Above: Successful deployment of all resources, as reflected in Azure portal.
 
 This project demonstrates the following tech: IaC with Bicep, scripting with PowerShell, secure hub-and-spoke landing zone design, private networking using private endpoints, and CI/CD automation using GitHub Actions. Although landing zone accelerators are often used to simplify deployment processes, I wanted a hands on, ground level view while building an automated pipline that would deploy key parts of infra. 
 
-This project's a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads.
+This project's a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads. Perhaps a more realistic production pattern might have included the deployment of monitoring + Sentinel for centralized security. If I were to do this project again, I would consider integrate VPN gateways, and an on-prem vnet to simulate P2S/S2S connections. 
+
+I would have also looked into methods to prevent configuration drift and added protections for automated rollback.
