@@ -60,7 +60,6 @@ The GitHub Actions pipeline automates the full deployment and validation process
 ├── 📁 bicep/ # Bicep modules for hub, spokes, endpoints, and services
 ├── 📁 scripts/ # PowerShell scripts for deployment & validation
 ├── 📁 .github/workflows/ # GitHub Actions pipeline (YAML)
-├── 📁 documents/ # Detailed step-by-step documentation
 ├── 📁 images/ # Diagrams, screenshots, architecture exports
 │
 ```
