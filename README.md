@@ -67,7 +67,8 @@ The GitHub Actions pipeline automates the full deployment and validation process
 
 ## ✅ Network Diagram / Screenshots
 
-[insert here]
+<img src="https://github.com/user-attachments/assets/5f5e2f84-4a31-4b49-9d08-f15136cf97e2" width="75%" alt="Screenshot 2025-08-28 020817">
+
 Above: Network diagram
 
 <img src="https://github.com/user-attachments/assets/557d54bb-c895-4d60-b077-65b8f2061b1b" alt="screenshot1" width="343"/>
@@ -78,6 +79,4 @@ Above: Successful deployment of all resources, as reflected in Azure portal.
 
 This project demonstrates the following tech: IaC with Bicep, scripting with PowerShell, secure hub-and-spoke landing zone design, private networking using private endpoints, and CI/CD automation using GitHub Actions. Although landing zone accelerators are often used to simplify deployment processes, I wanted a hands on, ground level view while building an automated pipline that would deploy key parts of infra. 
 
-This project's a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads. Perhaps a more realistic production pattern might have included the deployment of monitoring + Sentinel for centralized security. If I were to do this project again, I would consider integrate VPN gateways, creating UDRs to ensure all traffic passes through the hub's firewall, and I would have created an on-prem vnet to simulate P2S/S2S VPN connections. 
-
-I would have also looked into methods to prevent configuration drift and added protections for automated rollback.
+This project is a simplification of what might be deployed in a production environment. The spokes are serverless-only, whereas real-life implementation would include application VM's (i.e. web servers, microservices, etc.), jumpboxes / management VMs, backup VMs, and other workloads. If I were to do this project again, I would consider integrating VPN gateways,  UDRs to ensure all traffic passes through the hub's firewall, on-prem vnets for P2S/S2S VPN connections, and centralized monitoring/security with Azure Monitor and Sentinel. I would have also looked into methods to prevent configuration drift and added protections for automated rollback.
