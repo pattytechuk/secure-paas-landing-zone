@@ -1,6 +1,6 @@
 param location string = 'uksouth'
 
-resource spokeVNet1 'Microsoft.Network/virtualNetworks@2023-06-01' = {
+resource spokeVNet1 'Microsoft.Network/virtualNetworks@2024-07-01' = {
   name: 'vnet-apps'
   location: location
   properties: {
@@ -12,7 +12,7 @@ resource spokeVNet1 'Microsoft.Network/virtualNetworks@2023-06-01' = {
   }
 }
 
-resource spokeVNet2 'Microsoft.Network/virtualNetworks@2023-06-01' = {
+resource spokeVNet2 'Microsoft.Network/virtualNetworks@2024-07-01' = {
   name: 'vnet-data'
   location: location
   properties: {
