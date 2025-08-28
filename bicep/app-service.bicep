@@ -1,7 +1,7 @@
 param location string = 'uksouth'
 
 // App Service plan
-resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2024-11-01' = {
   name: 'dev-appserviceplan'
   location: location
   sku: { name: 
@@ -14,7 +14,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
 }
 
 // Web App
-resource webApp 'Microsoft.Web/sites@2023-01-01' = {
+resource webApp 'Microsoft.Web/sites@2024-11-01' = {
   name: 'dev-webapp'
   location: location
   properties: {
@@ -24,7 +24,7 @@ resource webApp 'Microsoft.Web/sites@2023-01-01' = {
 }
 
 // Private endpoint for the web app
-resource appPrivateEndpoint 'Microsoft.Network/privateEndpoints@2023-06-01' = {
+resource appPrivateEndpoint 'Microsoft.Network/privateEndpoints@2024-07-01' = {
   name: 'pe-webapp'
   location: location
   properties: {
