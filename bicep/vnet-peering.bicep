@@ -1,7 +1,7 @@
 param hubVNetId string
 param spokeVNetId string
 
-resource hubToSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-06-01' = {
+resource hubToSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
   name: 'vnet-hub/spoke-peering'
   parent: hubVNetId
   properties: {
@@ -11,7 +11,7 @@ resource hubToSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@20
   }
 }
 
-resource spokeToHub 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-06-01' = {
+resource spokeToHub 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
   name: 'vnet-spoke/hub-peering'
   parent: spokeVNetId
   properties: {
