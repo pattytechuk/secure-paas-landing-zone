@@ -1,6 +1,6 @@
 param location string = 'uksouth'
 
-resource hubVNet 'Microsoft.Network/virtualNetworks@2023-06-01' = {
+resource hubVNet 'Microsoft.Network/virtualNetworks@2024-07-01' = {
   name: 'vnet-hub'
   location: location
   properties: {
