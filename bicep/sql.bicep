@@ -14,18 +14,18 @@ param keyVaultName string = 'my-keyvault1'
 param sqlPasswordSecretName string = 'SqlAdminPassword'
 
 // Reference the existing Key Vault
-resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' existing = {
+resource keyVault 'Microsoft.KeyVault/vaults@2024-07-01' existing = {
   name: keyVaultName
 }
 
 // Reference the existing secret inside Key Vault
-resource sqlAdminPassword 'Microsoft.KeyVault/vaults/secrets@2023-07-01' existing = {
+resource sqlAdminPassword 'Microsoft.KeyVault/vaults/secrets@2024-07-01' existing = {
   parent: keyVault
   name: sqlPasswordSecretName
 }
 
 // SQL Server
-resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
+resource sqlServer 'Microsoft.Sql/servers@2024-07-01-preview' = {
   name: sqlServerName
   location: location
   properties: {
@@ -35,7 +35,7 @@ resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
 }
 
 // SQL Database (basic tier for lab/demo)
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2024-07-01-preview' = {
   name: '${sqlServer.name}/mydb'
   location: location
   sku: {
