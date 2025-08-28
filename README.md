@@ -67,7 +67,7 @@ The GitHub Actions pipeline automates the full deployment and validation process
 
 ## ✅ Network Diagram / Screenshots
 
-<img src="https://github.com/user-attachments/assets/5f5e2f84-4a31-4b49-9d08-f15136cf97e2" width="75%" alt="Screenshot 2025-08-28 020817">
+<img src="https://github.com/user-attachments/assets/5f5e2f84-4a31-4b49-9d08-f15136cf97e2" width="85%" alt="Screenshot 2025-08-28 020817">
 
 Above: Network diagram
 
